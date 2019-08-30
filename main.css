@@ -1,7 +1,7 @@
 html ,
 
 html{
-    background-image: url(background.png);
+    background-image: url(img/background.png);
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
@@ -56,11 +56,14 @@ body *{
 p {
     font-size: 18px;
     padding:2px;
+    line-height:2;
+
 }
 a {
     color: var(--themecolor);       
     text-decoration: none;
     text-align: right;
+    margin: 0px;
 
 
 }
@@ -68,6 +71,10 @@ a:hover {
     color: var(--themecolor);        
     text-decoration: underline;
 
+}
+
+img {
+    width: 95%;
 }
 
 .header *{
@@ -96,4 +103,19 @@ a:hover {
 }
 .blockquote *{
     background-color: #111;
+}
+
+.codesnippets {
+    background-color: #111;
+    font-family: monospace;
+    display: inline-block;
+    padding: none;
+    border: none;
+    margin: 0px;
+    font-size: inherit;
+}
+
+.caption{
+    font-style: italic;
+    
 }

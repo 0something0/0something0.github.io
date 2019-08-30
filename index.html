@@ -25,10 +25,62 @@
     <div class = navbar>
         <a href = index.html>Home</a>
         <a href = https://www.youtube.com/channel/UCccLk2PPesGPBQ2PhQaAFAQ?> Youtube</a>
+        <a href = manifesto.html>Communist Manifesto 2: Electric Boogladoo</a>
     </div>
     <div class = entry>
         <h2>Hello there!</h2>
         <p> It seems that you've found my website. I assume you came through from my Youtube channel. If someone else linked my stuff elsewhere, tell them I said thanks for giving me attention. Some of my stiff don't really fit within the format of a video, which is why I post them in writing here. Some of my interests are games, video production, 2D and 3D graphics, game design, and hard science worldbulding. I honestly don't have the expertise in one single area to delve deep into it though. Don't expect regular or frequent updates here - I'm probably going to be too busy between my projects and schoolwork. </p>
+    </div>
+        <div class = entry>
+        <h2>Craft It Yourself - Adjusting Game Time (2019-08-30)</h2>
+        <p>
+            Progress continues on the modpack. I probably can make these updates into videos but I don’t want to put my laptop under this kind of stress that often, and it’s a pain having to wait 5 minutes for the modpack to boot up and fuss around gathering footage. Sticking the folder into a RAMdisk doesn’t feel fast enough either, though it takes closer to 1 minute to load. I imagine there is a way to unpack the jar files for faster loading. I do have a “lite” version of the modpack in the works and perhaps I should get that done first for the sake of reduced loading times.
+
+        </p>
+        <p>
+             Currently, I am working on fixing things that don’t act as they should.  For example. Repose is causing dirt-roofed caves to collapse. Most notable of these changes however are whitelisting various mods that add in equipment so they work properly without interference from Tinker’s Survival. I also found out that Tinker’s Survival wasn’t broken after all. I had to physically strike flint against stone blocks to get flint shards. There also was some cleanup of the HUD and the addition of a content pack for Immersive Vehicles.  The change that I would say is the most significant, and the main topic of this write-up, however is the change in day length. Nighttime is quite brutal in this modpack thanks to the Epic Seige Mod, even with advanced weaponary, which is why I thought it was a good idea to give the player time to prepare. I decided it to set it to 6 times the normal amount, or 2 real hours. However, Millenaire probably will be affected by the change in daytime tickspeed and I will have to see how this turns out. In the meantime, with a host of mods affecting the day/night cycle, the process of changing the day-night cycle was quite involved. 
+
+        </p>
+        <p>
+            At first, I used <a href="https://www.curseforge.com/minecraft/mc-mods/longer-days">Longer Days</a>. I was not happy with this mod, as it calculated how many ticks to tick back to slow down the flow of time as needed. This can be observed with a mod that shows the numerical ingame time, such as Better HUD or Stellar Skies. The counter keeps flickering back and forth. Serene Seasons also appeared to be disabled by this mod.
+        </p>
+        <p>
+            The second mod that I had used was <a href="https://www.curseforge.com/minecraft/mc-mods/time-speed-mod">Вращение Земли Майнкрафтская (Time-speed Mod)</a>, which translated into english means Cheeki Breeki iv Damke /s. This mod was somewhat better. It didn’t conflict with Serene Seasons but it was redundant as Serene Seasons already had a setting in its config that allows changing the length of the day.
+        </p>
+        <img src="img/minecraft/timesettings.png">
+            <div class="caption"><p>[Minecraft directory]/config/sereneseasons/seasons.cfg</p></div>
+        <p>
+            I needed to change the settings for Stellar Skies. I honestly don’t want to spend the time to find out what happens if only change the settings for one mod. 
+        </p>
+        <img src="img/minecraft/serverconfig.png">
+        <div class="caption"><p>[Minecraft directory]/config/stellarsky/CelestialSettings.cfg</p></div>
+        <p>
+            <span class="codesnippets">Day length</span> should be equal to the day length in the Serene Seasons config. Year length also should be equal to “Sub Season Duration * 12 . I didn’t touch that (though I might) given that it currently takes 82 in-game days, or 164 real hours to go through one year. However, a lunar month in Minecraft is 7 in-game days, so from an immersion perspective, this makes sense.
+
+        </p>
+        <p><i>(protip: when talking about fictional settings, use “immersion” instead of realism to avoid the moans of “bUt iTs fIcTiOn”)</i></p>
+        <p>
+            I couldn’t find anything related to the lunar cycle in the configs, but honestly, I can’t find the Moon in the sky either. Advanced Rocketry does replace celestial objects in the skybox, including the Moon.
+        </p>
+        <p>
+            <span class="codesnippets">Tick_Offset</span> was needed for some reason. When I have it set to zero, the game starts me off at 65:40 in the 120 hour day (more on that later), but I also couldn’t be bothered to investigate further.
+        </p>
+        <img src = "img/minecraft/tickoffset.png">
+        <div class="caption"><p>Strange behaviour regarding default starting time in a new world and the Tick_Offset value can be observed </p></div>
+        <img src="img/minecraft/guisettings.png">
+        <div class="caption"><p>[Minecraft directory]/config/stellarsky/GuiSettings.cfg</p></div>
+        <p>
+            I set <span class="codesnippets">Saturation_Words</span> to 0 and <span class="codesnippets">Brightness_Words</span> to 1 to make the text white, like the rest of the HUD. I set <span class="codesnippets">Shadows</span> to true to make the text a bit easier to see in certain situations. I set <span class="codesnippets">Transparency</span> (background transparency) to 0.0 to make the clock less obtrusive. Like the system clock on Windows, KDE, etc, I put the clock on the bottom right (<span class="codesnippets">Horizontal_Position=RIGHT</span>, <span class="codesnippets">Vertical Position=DOWN</span>). Make sure there aren’t any spaces after the values or the game will fail to launch.  
+        </p>
+        <p>
+            The other UI elements in <span class="codesnippets">[Minecraft directory]/config/stellarsky/GuiSettings.cfg</span> or <span class="codesnippets">[Minecraft directory]/config/stellarapi/GuiConfig.cfg</span> I disabled or had to be manually brought up using a keybind. Disabling the crosshair using Better HUD apparently also will disable those UI elements as well. The only item I actually had to disable was the <span class="codesnippets">time</span> element from StellarAPI as it was redundant. 
+        </p>
+        <img src="img/minecraft/stellarapiclock.png">
+        <div class="caption"><p>We can see the clock provided by StellarAPI through this mess of pre-update UI, which I have turned off.</p></div>
+        <p>
+            I previously mentioned the 120-hour ingame day. I decided it would be nice to have the seconds in real life and minutes in-game be synced up. Since 1 day is 120 real minutes, I modified the <span class="codesnippets">Daylength_in_Hour</span> to 120 to adjust the in-game time accordingly. That should be it for this update and a new update should be rolled up accordingly!
+        </p>
+            
     </div>
     <div class = entry>
         <h2>Creating a Minecraft Modpack (2019-08-25)</h2>
@@ -56,7 +108,7 @@
         </p>
     </div>
     <div class = entry>
-        <h2>Creating a Minecraft Modpack 2: Electric Boogladoo(2019-08-27)</h2>
+        <h2>Creating a Minecraft Modpack 2: Electric Boogladoo (2019-08-27)</h2>
         <p>
             I updated the website theme! I also plan to update my intro animation and pfp Soon™, which is similar to my legacy Youtube profile which we don't talk about. But I digress. I had finished the two playthrough videos but haven't uploaded it yet because I wanted to make the modpack available *somewhere*, whether that be ATLauncher, Technic Launcher. I had ultimatley gone with Twitch/Curseforge because it massively simplifies license handling, even with All Rights Reserved mods. With the modpack being public, I declare: 
         </p>
@@ -65,7 +117,7 @@
             I also added some more mods -Little Tiles, Chisel and Bits, Chisel, ArchitectureCraft, Quark, Rougelike Dungeons, Immersive Vehicles, Tornados, Hunger Overhaul, Enhanced Overlays, Spice of Life, Epic Siege Mod, Subterranean Waters, and probably some others that I overlooked. There probably are several broken things. The ones I found so far in BetterHUD, where the vigentte overlay causes the screen to become black, and Flans Mod, which I didn't install properly. Shaders probably also don't work. The aformentioned issue probably is a symptom of a bigger problem; I noticed that HUD textures that should be transparent aren't, which can be seen at the Tough As Nails temperature indicator, and the water drop overlay, also in BetterHUD. 
         </p>
         
-        <img src="BlackBGassets.png" alt="The image contains HUD assets with black grounds that should be transparent." style="width:95%;height:auto;">
+        <img src="img/minecraft/BlackBGassets.png" alt="The image contains HUD assets with black grounds that should be transparent." style="width:95%;height:auto;">
         <h2><a href = https://www.curseforge.com/minecraft/modpacks/craft-it-yourself>Get the modpack HERE! (awaiting approval)</a></h2>
         
         <iframe width="560" height="315" src="https://www.youtube.com/embed/r9IrdmZzMCM" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -73,6 +125,8 @@
         
         
     </div>
+
+    
 </body>
 </html>
 
